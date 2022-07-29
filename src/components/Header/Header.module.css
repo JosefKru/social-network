@@ -1,9 +1,20 @@
 .header {
-    grid-area: h;
-    background-color: green;
+  grid-area: h;
+  background-color: green;
 }
 
 .header img {
-    width: 20px;
+  width: 58px;
 }
 
+.login {
+  float: right;
+}
+
+.login a {
+  color: whitesmoke;
+}
+
+.hello {
+  color: bisque;
+}
