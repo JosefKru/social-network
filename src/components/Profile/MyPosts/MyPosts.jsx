@@ -27,6 +27,9 @@ const MyPosts = (props) => {
             onChange={onPostChange}
             ref={newPostElement}
             value={props.newPostText}
+            placeholder="Опишите ваш грибной трип.."
+            cols="60"
+            rows="5"
           />
         </div>
         <div>

@@ -15,22 +15,23 @@ export const usersAPI = {
       .then((response) => response.data)
   },
 
-  getFollow(userId) {
+  follow(userId) {
     return instance.post(`follow/${userId}`).then((response) => response.data)
   },
 
-  getUnfollow(userId) {
+  unfollow(userId) {
     return instance.delete(`follow/${userId}`).then((response) => response.data)
-  },
-
-  getAuthMe() {
-    return instance.get(`auth/me`).then((response) => response.data)
   },
 
   getProfile(profileId) {
     return instance
       .get(`profile/${profileId}`)
       .then((response) => response.data)
+  },
+}
+export const authAPI = {
+  getAuthMe() {
+    return instance.get(`auth/me`).then((response) => response.data)
   },
 }
 
