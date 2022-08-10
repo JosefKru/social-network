@@ -94,6 +94,7 @@ export const toggleFollowingProgress = (isFetching, userId) => ({
   userId,
 })
 
+// ===== thunk creators =====
 export const getUsersThunkCreator = (currentPage, pageSize) => {
   return (dispatch) => {
     dispatch(toggleIsFetching(true))
@@ -105,8 +106,6 @@ export const getUsersThunkCreator = (currentPage, pageSize) => {
     })
   }
 }
-
-// ===== thunk creators =====
 export const onPageChange = (pageNumber, pageSize) => {
   return (dispatch) => {
     dispatch(setCurrentPage(pageNumber))
