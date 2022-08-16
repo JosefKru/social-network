@@ -24,21 +24,35 @@ export const usersAPI = {
   },
 
   getProfile(profileId) {
-    return instance
-      .get(`profile/${profileId}`)
-      .then((response) => response.data)
+    console.warn('Устаревший метод. Используй profileAPI.getProfile(profileId)')
+    return profileAPI.getProfile(profileId)
   },
 }
+
 export const authAPI = {
   getAuthMe() {
     return instance.get(`auth/me`).then((response) => response.data)
   },
 }
 
+export const profileAPI = {
+  getProfile(profileId) {
+    return instance
+      .get(`profile/${profileId}`)
+      .then((response) => response.data)
+  },
+  getStatus(userId) {
+    return instance.get(`profile/status/` + userId)
+  },
+  updateStatus(status) {
+    return instance.put(`profile/status`, { status: status })
+  },
+}
+
 // так было без инстанса
 // export const getUsers = (currentPage, pageSize) => (
 //
-//    axios.get( baseUrl + `users?page=${currentPage}&count=${pageSize}`
+//  axios.get( baseUrl + `users?page=${currentPage}&count=${pageSize}`
 //
 //    ).then( response => response.data )
 // )
