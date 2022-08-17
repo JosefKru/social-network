@@ -66,7 +66,7 @@ export const setStatus = (status) => ({ type: SET_STATUS, status })
 // ==== thunk creators ====
 export const getProfile = (userId) => {
   return (dispatch) => {
-    usersAPI.getProfile(userId).then((data) => {
+    profileAPI.getProfile(userId).then((data) => {
       dispatch(setUserProfile(data))
     })
   }
@@ -87,4 +87,5 @@ export const updateStatus = (status) => (dispatch) => {
     }
   })
 }
+
 export default profileReducer

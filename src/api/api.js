@@ -22,11 +22,6 @@ export const usersAPI = {
   unfollow(userId) {
     return instance.delete(`follow/${userId}`).then((response) => response.data)
   },
-
-  getProfile(profileId) {
-    console.warn('Устаревший метод. Используй profileAPI.getProfile(profileId)')
-    return profileAPI.getProfile(profileId)
-  },
 }
 
 export const authAPI = {
@@ -41,9 +36,11 @@ export const profileAPI = {
       .get(`profile/${profileId}`)
       .then((response) => response.data)
   },
+
   getStatus(userId) {
-    return instance.get(`profile/status/` + userId)
+    return instance.get(`profile/status/${userId}`)
   },
+
   updateStatus(status) {
     return instance.put(`profile/status`, { status: status })
   },
