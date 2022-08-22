@@ -5,3 +5,8 @@
 .formControl.error span {
   color: red;
 }
+.formSumaryError {
+  border: 2px solid rebeccapurple;
+  padding: 5px;
+  color: red;
+}

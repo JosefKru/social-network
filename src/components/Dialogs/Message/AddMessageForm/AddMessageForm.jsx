@@ -17,6 +17,8 @@ const AddMessageForm = (props) => {
           component={Textarea}
           name="newMessageBody"
           placeholder="Введите ваше сообщение"
+          cols="30"
+          rows="5"
         />
       </div>
       <div>
