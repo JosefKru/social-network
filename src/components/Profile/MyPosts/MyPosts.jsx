@@ -31,12 +31,12 @@ const AddPostForm = (props) => {
 const AddNewPostForm = reduxForm({ form: 'profileAddPostForm' })(AddPostForm)
 
 const MyPosts = (props) => {
-  let postsElements = props.posts.map((p) => (
-    <Post message={p.message} likesCount={p.likesCount} />
-  ))
+  let postsElements = props.posts
+    .slice(0) //если хочешь мутировать входные данные, то мутируй их копию
+    .reverse() //разворачивает массив, то есть мутирует его (для примера)
+    .map((p) => <Post message={p.message} likesCount={p.likesCount} />)
 
   let onAddPost = (values) => {
-    console.log(values)
     props.addPost(values.newPostText)
   }
 

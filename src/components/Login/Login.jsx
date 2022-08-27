@@ -6,6 +6,8 @@ import { Navigate } from 'react-router'
 
 const Login = (props) => {
   const onSubmin = (formData) => {
+    console.log(formData)
+
     props.login(formData.login, formData.password, formData.rememberMe)
   }
 

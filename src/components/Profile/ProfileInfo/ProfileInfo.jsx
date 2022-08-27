@@ -16,10 +16,10 @@ const ProfileInfo = (props) => {
           status={props.status}
           updateStatus={props.updateStatus}
         />
-        {/* <ProfileStatusFun
+        <ProfileStatusFun
           status={props.status}
           updateStatus={props.updateStatus}
-        /> */}
+        />
         ava + description
       </div>
     </div>
