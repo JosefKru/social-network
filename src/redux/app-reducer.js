@@ -24,7 +24,7 @@ export const initializedSuccess = () => ({
 })
 
 // ==== thunk creators ====
-export const initializeApp = () => (dispatch) => {
+export const initializeApp = () => async (dispatch) => {
   const promise = dispatch(getAuthMe())
   Promise.all([promise]).then(() => {
     dispatch(initializedSuccess())

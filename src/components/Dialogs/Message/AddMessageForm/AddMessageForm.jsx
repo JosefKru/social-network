@@ -1,5 +1,5 @@
 import React from 'react'
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm, reset } from 'redux-form'
 import {
   maxLengthCreator,
   required,
@@ -28,6 +28,11 @@ const AddMessageForm = (props) => {
   )
 }
 
-export const AddMessgaeFormRedux = reduxForm({ form: 'addMessageForm' })(
-  AddMessageForm
-)
+const afterSubmit = (_, dispatch) => {
+  dispatch(reset('addMessageForm'))
+}
+
+export const AddMessgaeFormRedux = reduxForm({
+  form: 'addMessageForm',
+  onSubmitSuccess: afterSubmit,
+})(AddMessageForm)

@@ -1,5 +1,5 @@
-import React from 'react'
-import { Field, reduxForm } from 'redux-form'
+import React, { useEffect } from 'react'
+import { Field, reduxForm, reset } from 'redux-form'
 import { required } from '../../../utils/validators/validator'
 import s from './MyPosts.module.css'
 import Post from './Post/Post'
@@ -9,6 +9,7 @@ import { Textarea } from '../../common/FormControls/FormControls.jsx'
 const maxLength10 = maxLengthCreator(10)
 
 const AddPostForm = (props) => {
+  useEffect(() => {}, [])
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
@@ -28,7 +29,12 @@ const AddPostForm = (props) => {
   )
 }
 
-const AddNewPostForm = reduxForm({ form: 'profileAddPostForm' })(AddPostForm)
+const afterSubmit = (_, dispatch) => dispatch(reset('profileAddPostForm'))
+
+const AddNewPostForm = reduxForm({
+  form: 'profileAddPostForm',
+  onSubmitSuccess: afterSubmit, //обнуляй форму после отправки
+})(AddPostForm)
 
 const MyPosts = (props) => {
   let postsElements = props.posts

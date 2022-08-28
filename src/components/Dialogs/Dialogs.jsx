@@ -1,5 +1,5 @@
 import React from 'react'
-import s from './Dialogs.module.css'
+import style from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem'
 import Message from './Message/Message'
 import { AddMessgaeFormRedux } from './Message/AddMessageForm/AddMessageForm.jsx'
@@ -19,9 +19,9 @@ const Dialogs = (props) => {
   }
 
   return (
-    <div className={s.dialogs}>
-      <div className={s.dialogsItems}>{dialogsElements}</div>
-      <div className={s.messages}>
+    <div className={style.dialogs}>
+      <div className={style.dialogsItems}>{dialogsElements}</div>
+      <div className={style.messages}>
         <div>{messagesElements}</div>
         <AddMessgaeFormRedux onSubmit={onSendMessageClick} />
       </div>

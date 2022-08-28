@@ -44,6 +44,7 @@ it('length of posts should be decrement', () => {
   //3
   expect(newState.posts.length).toBe(3)
 })
+
 it('length of posts should`t be decrement, if id is incorrect', () => {
   //1
   let action = deletePost(1000)
