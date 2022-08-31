@@ -12,6 +12,7 @@ const User = ({ user, followingInProgress, unfollow, follow }) => {
             <img
               src={user.photos.small != null ? user.photos.small : userPhoto}
               className={styles.userPhoto}
+              alt="Аватар"
             />
           </NavLink>
         </div>

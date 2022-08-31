@@ -1,11 +1,11 @@
 import React from 'react'
-import s from './Navbar.module.css'
+import style from './Navbar.module.css'
 import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
   return (
-    <nav className={s.nav}>
-      <div className={s.item}>
+    <nav className={style.nav}>
+      <div className={style.item}>
         <NavLink
           to="/profile"
           style={({ isActive }) => ({
@@ -15,7 +15,7 @@ const Navbar = () => {
           Profile
         </NavLink>
       </div>
-      <div className={`${s.item} ${s.active}`}>
+      <div className={`${style.item} ${style.active}`}>
         <NavLink
           to="/dialogs"
           style={({ isActive }) => ({
@@ -25,7 +25,7 @@ const Navbar = () => {
           Messages
         </NavLink>
       </div>
-      <div className={`${s.item} ${s.active}`}>
+      <div className={`${style.item} ${style.active}`}>
         <NavLink
           to="/users"
           style={({ isActive }) => ({

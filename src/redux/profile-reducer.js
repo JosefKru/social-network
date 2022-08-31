@@ -66,7 +66,6 @@ export const deletePost = (postId) => ({ type: DELETE_POST, postId: postId })
 // ==== thunk creators ====
 export const getProfile = (userId) => async (dispatch) => {
   let response = await profileAPI.getProfile(userId)
-  console.log(response)
   dispatch(setUserProfile(response.data))
 }
 

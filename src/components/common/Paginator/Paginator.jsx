@@ -25,7 +25,7 @@ const Paginator = ({
       {slicedPages.map((p) => {
         return (
           <span
-            className={currentPage === p && styles.selectedPage}
+            className={currentPage === p ? styles.selectedPage : undefined}
             onClick={(e) => {
               onPageChanged(p)
             }}

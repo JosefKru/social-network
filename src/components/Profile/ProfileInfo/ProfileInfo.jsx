@@ -1,6 +1,6 @@
 import React from 'react'
 import Preloader from '../../common/Preloader/Preloader'
-import s from './ProfileInfo.module.css'
+import style from './ProfileInfo.module.css'
 import ProfileStatus from './ProfileStatus'
 import ProfileStatusWithHook from './ProfileStatusFun'
 import userPhoto from '../../../assets/images/user.png'
@@ -11,10 +11,11 @@ const ProfileInfo = (props) => {
   }
   return (
     <div>
-      <div className={s.descriptionBlock}>
+      <div className={style.descriptionBlock}>
         <img
           src={props.profile.photos.large || userPhoto}
-          className={s.photo}
+          className={style.photo}
+          alt="Аватар"
         />
         <ProfileStatus
           status={props.status}

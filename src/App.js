@@ -13,7 +13,6 @@ import { initializeApp } from './redux/app-reducer'
 import { compose } from 'redux'
 import { withRouter } from './hoc/withRouter'
 import store from './redux/redux-store'
-import {} from 'react-router-dom'
 
 class App extends React.Component {
   componentDidMount() {

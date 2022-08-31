@@ -41,7 +41,7 @@ class ProfileStatus extends React.Component {
           <div>
             <strong>
               <span onDoubleClick={this.activateEditMode}>
-                {this.props.status || 'local-state'}
+                {this.props.status || 'epmty local-state'}
               </span>
             </strong>
           </div>

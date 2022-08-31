@@ -5,12 +5,12 @@ import { login } from './../../redux/auth-reducer'
 import { Navigate } from 'react-router'
 
 const Login = (props) => {
-  const onSubmin = (formData) => {
-    props.login(formData.login, formData.password, formData.rememberMe)
-  }
-
   if (props.isAuth) {
     return <Navigate to="/profile" />
+  }
+
+  const onSubmin = (formData) => {
+    props.login(formData.login, formData.password, formData.rememberMe)
   }
 
   return (
