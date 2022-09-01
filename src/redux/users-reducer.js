@@ -11,11 +11,11 @@ const FOLLOWING_IN_PROGRESS = 'FOLLOWING_IN_PROGRESS'
 
 let initialState = {
   users: [],
-  pageSize: 5,
+  pageSize: 10,
   totalUsersCount: 0,
   currentPage: 1,
   isFetching: true,
-  followingInProgress: [2, 3],
+  followingInProgress: [],
 }
 
 const usersReducer = (state = initialState, action) => {
