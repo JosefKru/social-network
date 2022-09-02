@@ -45,7 +45,7 @@ const Paginator = ({
     <div className={styles.paginator}>
       {portionNumber > 1 ? (
         <button onClick={() => setPortionNumber(portionNumber - 1)}>
-          PREV
+          PREV{' '}
         </button>
       ) : (
         undefined
