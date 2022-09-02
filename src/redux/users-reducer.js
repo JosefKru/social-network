@@ -11,11 +11,11 @@ const FOLLOWING_IN_PROGRESS = 'FOLLOWING_IN_PROGRESS'
 
 let initialState = {
   users: [],
-  pageSize: 10,
+  pageSize: 5,
   totalUsersCount: 0,
   currentPage: 1,
   isFetching: true,
-  followingInProgress: [],
+  followingInProgress: [2, 3],
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -85,12 +85,20 @@ export const toggleFollowingProgress = (isFetching, userId) => ({
 // ===== thunk creators =====
 export const requestUsers = (page, pageSize) => async (dispatch) => {
   dispatch(toggleIsFetching(true))
-  dispatch(setCurrentPage(page))
 
   let data = await usersAPI.getUsers(page, pageSize)
   dispatch(toggleIsFetching(false))
   dispatch(setUsers(data.items))
   dispatch(setTotalUsersCount(data.totalCount))
+}
+
+export const onPageChange = (pageNumber, pageSize) => async (dispatch) => {
+  dispatch(setCurrentPage(pageNumber))
+  dispatch(toggleIsFetching(true))
+
+  let data = await usersAPI.getUsers(pageNumber, pageSize)
+  dispatch(toggleIsFetching(false))
+  dispatch(setUsers(data.items))
 }
 
 export const follow = (userId) => async (dispatch) => {

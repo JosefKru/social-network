@@ -1,11 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {
+  followSuccess,
+  unfollowSuccess,
   follow,
   unfollow,
   toggleFollowingProgress,
   requestUsers,
-  setCurrentPage,
+  onPageChange,
 } from '../../redux/users-reducer'
 import Users from './Users'
 import Preloader from '../common/Preloader/Preloader'
@@ -22,15 +24,11 @@ import {
 
 class UsersContainer extends React.Component {
   componentDidMount() {
-    // this.props.getUsers(this.props.currentPage, this.props.pageSize)
-    const { currentPage, pageSize } = this.props
-    this.props.getUsers(currentPage, pageSize)
+    this.props.getUsers(this.props.currentPage, this.props.pageSize)
   }
 
   onPageChanged = (pageNumber) => {
-    const { pageSize } = this.props
-    this.props.getUsers(pageNumber, pageSize)
-    // this.props.onPageChange(pageNumber, this.props.pageSize)
+    this.props.onPageChange(pageNumber, this.props.pageSize)
   }
 
   render() {
@@ -71,11 +69,13 @@ export default compose(
   connect(
     mapStateToProps,
     {
+      followSuccess,
+      unfollowSuccess,
       follow,
       unfollow,
-      setCurrentPage,
       toggleFollowingProgress,
       getUsers: requestUsers,
+      onPageChange,
     }
   )
 )(UsersContainer)
