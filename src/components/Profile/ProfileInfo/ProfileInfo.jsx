@@ -2,29 +2,40 @@ import React from 'react'
 import Preloader from '../../common/Preloader/Preloader'
 import style from './ProfileInfo.module.css'
 import ProfileStatus from './ProfileStatus'
-import ProfileStatusWithHook from './ProfileStatusFun'
+// import ProfileStatusWithHook from './ProfileStatusFun'
 import userPhoto from '../../../assets/images/user.png'
 
-const ProfileInfo = (props) => {
-  if (!props.profile) {
+const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto }) => {
+  if (!profile) {
     return <Preloader />
   }
+
+  const onPhotoSelected = (e) => {
+    if (e.target.files.length) {
+      savePhoto(e.target.files[0])
+    }
+  }
+
   return (
     <div>
       <div className={style.descriptionBlock}>
         <img
-          src={props.profile.photos.large || userPhoto}
+          src={profile.photos.large || userPhoto}
           className={style.photo}
-          alt="Аватар"
+          alt=""
         />
-        <ProfileStatus
-          status={props.status}
-          updateStatus={props.updateStatus}
-        />
-        <ProfileStatusWithHook
-          status={props.status}
-          updateStatus={props.updateStatus}
-        />
+        {isOwner ? (
+          <div>
+            <input type="file" onChange={onPhotoSelected} />
+          </div>
+        ) : (
+          undefined
+        )}
+        <ProfileStatus status={status} updateStatus={updateStatus} />
+        {/* <ProfileStatusWithHook
+          status={status}
+          updateStatus={updateStatus}
+        /> */}
         ... Остальная информация ...
       </div>
     </div>

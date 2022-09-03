@@ -21,7 +21,7 @@ const Paginator = ({
   }
 
   return (
-    <div>
+    <div className={styles.paginator}>
       {slicedPages.map((p) => {
         return (
           <span
@@ -30,7 +30,7 @@ const Paginator = ({
               onPageChanged(p)
             }}
           >
-            {' ' + p}
+            {p}
           </span>
         )
       })}
