@@ -35,12 +35,13 @@ class App extends React.Component {
         <div className="app-wrapper-content">
           <Suspense fallback={<Preloader />}>
             <Routes>
-              <Route path="/dialogs" element={<DialogsContainer />} />
+              <Route path="" element={<ProfileContainer />} />
               <Route path="/profile" element={<ProfileContainer />} />
               <Route
                 path="/profile/:profileId"
                 element={<ProfileContainer />}
               />
+              <Route path="/dialogs" element={<DialogsContainer />} />
               <Route path="/users" element={<UsersContainer />} />
               <Route path="/login" element={<Login />} />
             </Routes>
@@ -65,7 +66,7 @@ const AppContainer = compose(
   )
 )(App)
 
-const AppLaunch = (props) => {
+const AppLaunch = () => {
   return (
     <BrowserRouter>
       <Provider store={store}>

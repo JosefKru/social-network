@@ -1,11 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Preloader from '../../common/Preloader/Preloader'
 import style from './ProfileInfo.module.css'
 import ProfileStatus from './ProfileStatus'
 // import ProfileStatusWithHook from './ProfileStatusFun'
 import userPhoto from '../../../assets/images/user.png'
+import ProfileDataForm from './ProfileDataForm/ProfileDataForm'
+import ProfileData from './ProfileData/ProfileData'
 
-const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto }) => {
+const ProfileInfo = ({
+  profile,
+  status,
+  updateStatus,
+  isOwner,
+  savePhoto,
+  saveProfile,
+}) => {
+  const [editMode, setEditMode] = useState(false)
+
   if (!profile) {
     return <Preloader />
   }
@@ -16,27 +27,44 @@ const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto }) => {
     }
   }
 
+  const onSubmit = (formData) => {
+    saveProfile(formData).then(() => {
+      setEditMode(false)
+    })
+  }
+
   return (
     <div>
       <div className={style.descriptionBlock}>
+        <div>
+          Мня зовут <b>{profile.fullName}</b>
+        </div>
         <img
           src={profile.photos.large || userPhoto}
           className={style.photo}
           alt=""
         />
-        {isOwner ? (
-          <div>
-            <input type="file" onChange={onPhotoSelected} />
-          </div>
-        ) : (
-          undefined
-        )}
+
         <ProfileStatus status={status} updateStatus={updateStatus} />
         {/* <ProfileStatusWithHook
           status={status}
           updateStatus={updateStatus}
         /> */}
-        ... Остальная информация ...
+        {editMode ? (
+          <ProfileDataForm
+            profile={profile}
+            initialValues={profile}
+            onSubmit={onSubmit}
+            onPhotoSelected={onPhotoSelected}
+            isOwner={isOwner}
+          />
+        ) : (
+          <ProfileData
+            onEditMode={() => setEditMode(true)}
+            profile={profile}
+            isOwner={isOwner}
+          />
+        )}
       </div>
     </div>
   )

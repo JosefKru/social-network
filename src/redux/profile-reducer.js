@@ -1,3 +1,4 @@
+import { stopSubmit } from 'redux-form'
 import { profileAPI } from './../api/api'
 
 const ADD_POST = 'profile/ADD-POST'
@@ -76,26 +77,54 @@ export const savePhotoSuccess = (photos) => ({
 
 // ==== thunk creators ====
 export const getProfile = (userId) => async (dispatch) => {
-  let response = await profileAPI.getProfile(userId)
+  const response = await profileAPI.getProfile(userId)
   dispatch(setUserProfile(response.data))
 }
 
 export const getStatus = (userId) => async (dispatch) => {
-  let response = await profileAPI.getStatus(userId)
+  const response = await profileAPI.getStatus(userId)
   dispatch(setStatus(response.data))
 }
 
 export const updateStatus = (status) => async (dispatch) => {
-  let response = await profileAPI.updateStatus(status)
+  const response = await profileAPI.updateStatus(status)
   if (response.data.resultCode === 0) {
     dispatch(setStatus(status))
   }
 }
 
 export const savePhoto = (file) => async (dispath) => {
-  let response = await profileAPI.savePhoto(file)
+  const response = await profileAPI.savePhoto(file)
   if (response.data.resultCode === 0) {
     dispath(savePhotoSuccess(response.data.data.photos))
+  }
+}
+
+export const saveProfile = (profileData) => async (dispatch, getState) => {
+  const response = await profileAPI.saveProfile(profileData)
+  const userId = getState().auth.id
+  if (response.data.resultCode === 0) {
+    dispatch(getProfile(userId))
+  } else {
+    let message =
+      response.data.messages.length > 0
+        ? response.data.messages[0]
+        : 'Some error'
+
+    let parseMessage = ''
+    if (message.split(' ').includes('format')) {
+      //импровизация
+      parseMessage = message
+        .split('->')[1]
+        .split('')
+        .slice(0, parseMessage.length - 1)
+        .map((item, index) => (index === 0 ? item.toLowerCase() : item))
+        .join('')
+    }
+    dispatch(
+      stopSubmit('editProfile', { contacts: { [parseMessage]: message } })
+    )
+    return Promise.reject(message)
   }
 }
 

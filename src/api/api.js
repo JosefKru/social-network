@@ -58,6 +58,9 @@ export const profileAPI = {
       },
     })
   },
+  saveProfile(profileData) {
+    return instance.put('/profile', profileData)
+  },
 }
 
 // так было без инстанса

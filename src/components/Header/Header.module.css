@@ -4,7 +4,7 @@
 }
 
 .header img {
-  width: 58px;
+  width: 5%;
 }
 
 .login {
@@ -17,4 +17,8 @@
 
 .hello {
   color: bisque;
+}
+
+.logout {
+  text-align: center;
 }
