@@ -4,13 +4,13 @@ import { required } from '../../../utils/validators/validator'
 import { Input } from '../../common/FormControls/FormControls'
 import style from '../../common/FormControls/style.module.css'
 
-const LoginForm = ({ handleSubmit, error }) => {
+const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
         <Field
           validate={[required]}
-          placeholder="login"
+          placeholder="логин"
           name="login"
           component={Input}
         />
@@ -18,7 +18,7 @@ const LoginForm = ({ handleSubmit, error }) => {
       <div>
         <Field
           validate={[required]}
-          placeholder="password"
+          placeholder="пароль"
           name="password"
           component={Input}
           type="password"
@@ -26,8 +26,18 @@ const LoginForm = ({ handleSubmit, error }) => {
       </div>
       <div>
         <Field type="checkbox" name="rememberMe" component={Input} />
-        Remember me
+        <span>Запомнить</span>
       </div>
+      {captchaUrl && <img src={captchaUrl} alt="" />}
+      {captchaUrl && (
+        <Field
+          placeholder="Введите символы"
+          validate={[required]}
+          component={Input}
+          name="captcha"
+        />
+      )}
+
       {error && <div className={style.formSumaryError}>{error}</div>}
 
       <div>

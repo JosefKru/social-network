@@ -40,9 +40,15 @@ class ProfileStatus extends React.Component {
         {!this.state.editMode ? (
           <div>
             <b>Статусъ</b>:{' '}
-            <span onDoubleClick={this.activateEditMode}>
-              {this.props.status || 'у мня еще пока пчему-то нет статса'}
-            </span>
+            {this.props.isOwner ? (
+              <span onDoubleClick={this.activateEditMode}>
+                {this.props.status || 'у мня еще пока пчему-то нет статса'}
+              </span>
+            ) : (
+              <span>
+                {this.props.status || 'у мня еще пока пчему-то нет статса'}
+              </span>
+            )}
           </div>
         ) : (
           <div>

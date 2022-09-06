@@ -45,7 +45,11 @@ const ProfileInfo = ({
           alt=""
         />
 
-        <ProfileStatus status={status} updateStatus={updateStatus} />
+        <ProfileStatus
+          status={status}
+          updateStatus={updateStatus}
+          isOwner={isOwner}
+        />
         {/* <ProfileStatusWithHook
           status={status}
           updateStatus={updateStatus}

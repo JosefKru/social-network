@@ -4,19 +4,24 @@ import { LoginReduxForm } from './LoginForm/LoginForm'
 import { login } from './../../redux/auth-reducer'
 import { Navigate } from 'react-router'
 
-const Login = (props) => {
-  if (props.isAuth) {
+const Login = ({ isAuth, login, captchaUrl }) => {
+  if (isAuth) {
     return <Navigate to="/profile" />
   }
 
   const onSubmin = (formData) => {
-    props.login(formData.login, formData.password, formData.rememberMe)
+    login(
+      formData.login,
+      formData.password,
+      formData.rememberMe,
+      formData.captcha
+    )
   }
 
   return (
     <div>
       <h1>Login</h1>
-      <LoginReduxForm onSubmit={onSubmin} />
+      <LoginReduxForm onSubmit={onSubmin} captchaUrl={captchaUrl} />
     </div>
   )
 }
@@ -24,6 +29,7 @@ const Login = (props) => {
 const mapStateToProps = (state) => {
   return {
     isAuth: state.auth.isAuth,
+    captchaUrl: state.auth.captchaUrl,
   }
 }
 
