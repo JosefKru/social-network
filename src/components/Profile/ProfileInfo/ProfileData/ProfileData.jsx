@@ -16,15 +16,17 @@ const ProfileData = ({ profile, isOwner, onEditMode }) => {
         <b>Обо мне</b>: {profile.aboutMe}
       </div>
       <div>
-        <b>Мои немногочисленные контакты</b>:
+        <b>Мои контакты</b>:
         {Object.keys(profile.contacts).map((key) => {
-          return (
-            <Contacts
-              key={key}
-              contactKey={key}
-              contactValue={profile.contacts[key]}
-            />
-          )
+          if (profile.contacts[key]) {
+            return (
+              <Contacts
+                key={key}
+                contactKey={key}
+                contactValue={profile.contacts[key]}
+              />
+            )
+          }
         })}
       </div>
     </div>
@@ -34,7 +36,8 @@ const ProfileData = ({ profile, isOwner, onEditMode }) => {
 const Contacts = ({ contactKey, contactValue }) => {
   return (
     <div className={style.contact}>
-      <b>{contactKey}</b>: {contactValue}
+      <b>{contactKey}</b>:{' '}
+      <a href={contactValue}>{contactValue.split('https://')[1]}</a>
     </div>
   )
 }

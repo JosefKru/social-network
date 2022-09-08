@@ -1,3 +1,75 @@
+.container {
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 5px;
+}
+.item {
+  position: relative;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+}
+.itemName {
+  font-weight: bold;
+  position: absolute;
+  top: 10%;
+  left: 12%;
+}
+
+.itemStatus {
+  position: absolute;
+  top: 30%;
+  left: 12%;
+  background: #ccc;
+}
+
+.itemBtnUnfollow {
+  position: absolute;
+  top: 70%;
+  left: 12%;
+  padding: 5px;
+  background-color: white;
+  transition-duration: 0.4s;
+  border-radius: 5px;
+  border: 2px solid #f44336;
+}
+.itemBtnUnfollow:hover {
+  position: absolute;
+  top: 70%;
+  left: 12%;
+  color: whitesmoke;
+  background-color: #f44336;
+  cursor: pointer;
+}
+
+.itemBtnFollow {
+  position: absolute;
+  top: 70%;
+  left: 12%;
+  padding: 5px;
+  background-color: white;
+  transition-duration: 0.4s;
+  border-radius: 5px;
+  border: 2px solid #4caf50;
+}
+.itemBtnFollow:hover {
+  position: absolute;
+  top: 70%;
+  left: 12%;
+  color: whitesmoke;
+  background-color: #4caf50;
+  cursor: pointer;
+}
+
+.itemBtn:disabled {
+  position: absolute;
+  top: 70%;
+  left: 12%;
+  background: #ccc;
+  color: whitesmoke;
+}
+
 .userPhoto {
   max-width: 100px;
 }
