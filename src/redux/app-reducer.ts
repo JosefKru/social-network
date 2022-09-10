@@ -6,7 +6,7 @@ let initialState = {
   initialized: false,
 }
 
-const appReducer = (state = initialState, action) => {
+const appReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case INITIALIZED_SUCCESS:
       return {
@@ -24,7 +24,7 @@ export const initializedSuccess = () => ({
 })
 
 // ==== thunk creators ====
-export const initializeApp = () => async (dispatch) => {
+export const initializeApp = () => async (dispatch: any) => {
   const promise = dispatch(getAuthMe())
   Promise.all([promise]).then(() => {
     dispatch(initializedSuccess())

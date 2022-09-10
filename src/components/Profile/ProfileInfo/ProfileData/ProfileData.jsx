@@ -27,6 +27,7 @@ const ProfileData = ({ profile, isOwner, onEditMode }) => {
               />
             )
           }
+          return undefined
         })}
       </div>
     </div>
