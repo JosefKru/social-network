@@ -42,7 +42,10 @@ class App extends React.Component {
                 element={<ProfileContainer />}
               />
               <Route path="/dialogs" element={<DialogsContainer />} />
-              <Route path="/users" element={<UsersContainer />} />
+              <Route
+                path="/users"
+                element={<UsersContainer title="Hello from props" />}
+              />
               <Route path="/login" element={<Login />} />
               <Route path="*" element={<div>...404 NOT FOUND...</div>} />
             </Routes>
@@ -61,10 +64,7 @@ const mapStateToProps = (state) => {
 
 const AppContainer = compose(
   withRouter,
-  connect(
-    mapStateToProps,
-    { initializeApp }
-  )
+  connect(mapStateToProps, { initializeApp })
 )(App)
 
 const AppLaunch = () => {

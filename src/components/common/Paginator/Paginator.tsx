@@ -1,7 +1,14 @@
 import React from 'react'
 import styles from './style.module.css'
 
-const Paginator = ({
+type PropsType = {
+  totalUsersCount: number
+  pageSize: number
+  currentPage: number
+  onPageChanged: (pageNumber: number) => void
+}
+
+const Paginator: React.FC<PropsType> = ({
   totalUsersCount,
   pageSize,
   currentPage,
@@ -11,7 +18,7 @@ const Paginator = ({
 
   // импровизированный пагинатор
   let pages = []
-  let slicedPages = []
+  let slicedPages: Array<number> = []
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i)
     let curP = currentPage
@@ -27,7 +34,7 @@ const Paginator = ({
           <span
             key={p}
             className={currentPage === p ? styles.selectedPage : styles.item}
-            onClick={(e) => {
+            onClick={() => {
               onPageChanged(p)
             }}
           >

@@ -1,7 +1,4 @@
-import profileReducer, {
-  addPostActionCreator,
-  deletePost,
-} from '../profile-reducer'
+import profileReducer, { addPost, deletePost } from '../profile-reducer'
 
 let state = {
   posts: [
@@ -14,7 +11,7 @@ let state = {
 
 it('length of posts should be incremented', () => {
   //1
-  let action = addPostActionCreator('Как тебе такойэ?')
+  let action = addPost('Как тебе такойэ?')
 
   //2
   let newState = profileReducer(state, action)
@@ -25,7 +22,7 @@ it('length of posts should be incremented', () => {
 
 it('message of new posts should be correct', () => {
   //1
-  let action = addPostActionCreator('Как тебе такойэ?')
+  let action = addPost('Как тебе такойэ?')
 
   //2
   let newState = profileReducer(state, action)

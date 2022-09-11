@@ -62,12 +62,23 @@
   cursor: pointer;
 }
 
-.itemBtn:disabled {
+.itemBtnFollow:disabled {
   position: absolute;
   top: 70%;
   left: 12%;
-  background: #ccc;
+  background: #a6f9a7;
   color: whitesmoke;
+  border: 2px solid #a6f9a7;
+  cursor: wait;
+}
+.itemBtnUnfollow:disabled {
+  position: absolute;
+  top: 70%;
+  left: 12%;
+  background: #ea877f;
+  color: whitesmoke;
+  border: 2px solid #ea877f;
+  cursor: wait;
 }
 
 .userPhoto {
