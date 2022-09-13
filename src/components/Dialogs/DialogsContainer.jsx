@@ -20,9 +20,8 @@ let mapDispatchToProps = (dispatch) => {
 }
 
 export default compose(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  ),
+  connect(mapStateToProps, mapDispatchToProps),
   withAuthRedirect
 )(Dialogs)
+
+// const зависимости = ['марихуана', 'колёса', 'солятина']

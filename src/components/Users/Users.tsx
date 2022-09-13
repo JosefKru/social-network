@@ -5,6 +5,7 @@ import User from './User/User'
 import style from './users.module.css'
 
 type PropsType = {
+  title: string
   totalUsersCount: number
   pageSize: number
   currentPage: number

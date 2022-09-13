@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const ProfileStatusFun = (props) => {
+const ProfileStatusWithHooks = (props) => {
   const [status, setStatus] = useState(props.status)
   const [editMode, setEditMode] = useState(false)
 
@@ -17,12 +17,9 @@ const ProfileStatusFun = (props) => {
     setStatus(e.target.value)
   }
 
-  useEffect(
-    () => {
-      setStatus(props.status)
-    },
-    [props.status]
-  )
+  useEffect(() => {
+    setStatus(props.status)
+  }, [props.status])
 
   return editMode ? (
     <div>
@@ -40,4 +37,4 @@ const ProfileStatusFun = (props) => {
   )
 }
 
-export default ProfileStatusFun
+export default ProfileStatusWithHooks

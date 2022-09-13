@@ -134,6 +134,7 @@ export const toggleFollowingProgress = (
 // ===== thunk creators =====
 export const requestUsers =
   (page: number, pageSize: number) => async (dispatch: any) => {
+    dispatch(setCurrentPage(page))
     dispatch(toggleIsFetching(true))
 
     let data = await usersAPI.getUsers(page, pageSize)

@@ -1,18 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {
-  followSuccess,
-  unfollowSuccess,
   follow,
   unfollow,
-  toggleFollowingProgress,
   requestUsers,
   onPageChange,
 } from '../../redux/users-reducer'
 import Users from './Users'
 import Preloader from '../common/Preloader/Preloader'
 import { compose } from 'redux'
-// import { withAuthRedirect } from '../../hoc/withAuthRedirect'
+import { withAuthRedirect } from '../../hoc/withAuthRedirect'
 import {
   getCurrentPage,
   getFollowingInProgress,
@@ -63,6 +60,7 @@ class UsersContainer extends React.Component<PropsType> {
           <Preloader />
         ) : (
           <Users
+            title={this.props.title}
             totalUsersCount={this.props.totalUsersCount}
             pageSize={this.props.pageSize}
             currentPage={this.props.currentPage}
@@ -90,15 +88,12 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
 }
 
 export default compose(
-  // withAuthRedirect,
+  withAuthRedirect,
   connect<MapStatePropsType, MapDispatchPropsType, OwnPropsType, AppStateType>(
     mapStateToProps,
     {
-      // followSuccess,
-      // unfollowSuccess,
       follow,
       unfollow,
-      // toggleFollowingProgress,
       getUsers: requestUsers,
       onPageChange,
     }
