@@ -1,12 +1,22 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import style from './style.module.css'
 
-const ProfileData = ({ profile, isOwner, onEditMode }) => {
+const ProfileData = ({ profile, isOwner }) => {
   return (
     <div className={style.container}>
-      {isOwner && <button onClick={onEditMode}>Ридактировать</button>}
+      {isOwner && (
+        <NavLink to="/settings">
+          <button>Ридактировать</button>
+        </NavLink>
+      )}
       <div>
-        <b>Ищю ли йа работу</b>: {profile.lookingForAJob ? 'угу' : 'неа'}
+        <b>Ищю ли йа работу</b>:{' '}
+        {profile.lookingForAJob ? (
+          <span>угу &#9989;</span>
+        ) : (
+          <span>неа &#128581;</span>
+        )}
       </div>
 
       <div>
@@ -38,7 +48,9 @@ const Contacts = ({ contactKey, contactValue }) => {
   return (
     <div className={style.contact}>
       <b>{contactKey}</b>:{' '}
-      <a href={contactValue}>{contactValue.split('https://')[1]}</a>
+      <a href={contactValue} target="_blank">
+        {contactValue.split('https://')[1]}
+      </a>
     </div>
   )
 }

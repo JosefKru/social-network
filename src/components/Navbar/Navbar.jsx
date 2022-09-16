@@ -12,27 +12,37 @@ const Navbar = () => {
             color: isActive ? 'blue' : '#f7f7f7',
           })}
         >
-          Profile
+          Профиль
         </NavLink>
       </div>
-      <div className={`${style.item} ${style.active}`}>
+      <div className={style.item}>
         <NavLink
           to="/dialogs"
           style={({ isActive }) => ({
             color: isActive ? 'blue' : '#f7f7f7',
           })}
         >
-          Messages
+          Сообщенья
         </NavLink>
       </div>
-      <div className={`${style.item} ${style.active}`}>
+      <div className={style.item}>
         <NavLink
           to="/users"
           style={({ isActive }) => ({
             color: isActive ? 'blue' : '#f7f7f7',
           })}
         >
-          Users
+          Пользователи
+        </NavLink>
+      </div>
+      <div className={style.item}>
+        <NavLink
+          to="/settings"
+          style={({ isActive }) => ({
+            color: isActive ? 'blue' : '#f7f7f7',
+          })}
+        >
+          Настройки
         </NavLink>
       </div>
     </nav>

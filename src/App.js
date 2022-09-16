@@ -4,6 +4,7 @@ import HeaderContainer from './components/Header/HeaderContainer'
 import Login from './components/Login/Login'
 import Preloader from './components/common/Preloader/Preloader'
 import UsersContainer from './components/Users/UsersContainer'
+import Settings from './components/Settings/SettingsContainer'
 import './App.css'
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import { connect, Provider } from 'react-redux'
@@ -42,6 +43,7 @@ class App extends React.Component {
                 element={<ProfileContainer />}
               />
               <Route path="/dialogs" element={<DialogsContainer />} />
+              <Route path="/settings" element={<Settings />} />
               <Route
                 path="/users"
                 element={<UsersContainer title="Hello from props" />}

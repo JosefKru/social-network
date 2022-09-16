@@ -2,6 +2,7 @@ import React from 'react'
 import style from '../ProfileData/style.module.css'
 import { Field, reduxForm } from 'redux-form'
 import { Input, Textarea } from '../../../common/FormControls/FormControls'
+import Preloader from './../../../common/Preloader/Preloader'
 
 const ProfileDataForm = ({ onPhotoSelected, handleSubmit, profile, error }) => {
   return (
@@ -10,10 +11,10 @@ const ProfileDataForm = ({ onPhotoSelected, handleSubmit, profile, error }) => {
         {error && <div className={style.formSumaryError}>{error}</div>}
 
         <div>
-          <button>Сахранитъ</button>
+          <button className={style.saveBtn}>Сахранитъ</button>
         </div>
         <div>
-          <b>Загрузи свойо новое фото </b>
+          <b>Загрузи своё лучшее фото </b>
           <input type="file" onChange={onPhotoSelected} />
         </div>
 
@@ -21,7 +22,7 @@ const ProfileDataForm = ({ onPhotoSelected, handleSubmit, profile, error }) => {
           <b>Имя:</b>
           <Field
             //   validate={[required]}
-            placeholder="Как тя зовут?"
+            placeholder="Как мня зовут?"
             name="fullName"
             component={Input}
           />
@@ -40,9 +41,10 @@ const ProfileDataForm = ({ onPhotoSelected, handleSubmit, profile, error }) => {
         <div>
           <b>Мой профшнл скиллс</b>:
           <Field
-            placeholder="Введите хоть что-то.."
+            placeholder="Например, Delphi"
             name="lookingForAJobDescription"
             component={Textarea}
+            rows="5"
           />
         </div>
 
@@ -53,25 +55,30 @@ const ProfileDataForm = ({ onPhotoSelected, handleSubmit, profile, error }) => {
             placeholder="Опишите свои симптомы.."
             name="aboutMe"
             component={Textarea}
+            rows="5"
           />
         </div>
 
         <div>
-          {Object.keys(profile.contacts).map((key) => {
-            return (
-              <div key={key}>
-                <b>{key}</b>
-                {
-                  <Field
-                    placeholder={key}
-                    type="input"
-                    component={Input}
-                    name={`contacts.${key}`}
-                  />
-                }
-              </div>
-            )
-          })}
+          {!profile ? (
+            <Preloader />
+          ) : (
+            Object.keys(profile.contacts).map((key) => {
+              return (
+                <div key={key}>
+                  <b>{key}</b>
+                  {
+                    <Field
+                      placeholder={key}
+                      type="input"
+                      component={Input}
+                      name={`contacts.${key}`}
+                    />
+                  }
+                </div>
+              )
+            })
+          )}
         </div>
       </div>
     </form>

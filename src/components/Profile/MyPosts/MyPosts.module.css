@@ -1,7 +1,13 @@
 .postsBlock {
-    padding: 10px;
+  padding: 10px;
 }
 
 .posts {
-    margin-top: 10px;
+  margin-top: 10px;
+}
+
+textarea {
+  width: 500px;
+  height: 100px;
+  overflow: auto;
 }

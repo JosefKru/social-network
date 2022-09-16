@@ -12,10 +12,24 @@ export type InitialStateType = typeof initialState
 
 let initialState = {
   posts: [
-    { id: 1, message: 'Фантасмагоричный чай', likesCount: 12 },
-    { id: 2, message: "Oh boy is's my first trip", likesCount: 11 },
-    { id: 3, message: 'Ччеееееееееееееееееееёёёёё', likesCount: 11 },
-    { id: 4, message: 'Да-да, нет-нет', likesCount: 11 },
+    {
+      id: 1,
+      message:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam nulla est reprehenderit. Modi praesentium nisi voluptates perspiciatis neque dicta, temporibus iste fugiat consectetur nam voluptate aperiam debitis. Vitae iste, architecto, culpa nisi adipisci dolores illum quia sapiente nihil illo magnam! Sapiente vero beatae culpa ut harum quae, cum quidem autem officiis odio molestias illum unde vitae recusandae laudantium perspiciatis repellendus asperiores esse eveniet ',
+      likesCount: 12,
+    },
+    { id: 2, message: 'Моё сердце рзбито, но у мня есть клей', likesCount: 11 },
+    {
+      id: 3,
+      message:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam nulla est reprehenderit. Modi praesentium nisi',
+      likesCount: 11,
+    },
+    {
+      id: 4,
+      message: 'Йа думаю эт сциальная сеть еще слишком слаба..',
+      likesCount: 11,
+    },
   ] as Array<PostType>,
   newPostText: '',
   profile: null as ProfileType | null,

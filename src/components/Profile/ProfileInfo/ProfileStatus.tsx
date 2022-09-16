@@ -1,4 +1,5 @@
 import React, { ChangeEvent } from 'react'
+import style from './ProfileInfo.module.css'
 
 type PropsType = {
   status: string
@@ -50,7 +51,7 @@ class ProfileStatus extends React.Component<PropsType, StateType> {
     return (
       <>
         {!this.state.editMode ? (
-          <div>
+          <div className={style.statusContainer}>
             <b>Статусъ</b>:{' '}
             {this.props.isOwner ? (
               <span onDoubleClick={this.activateEditMode}>
@@ -63,7 +64,7 @@ class ProfileStatus extends React.Component<PropsType, StateType> {
             )}
           </div>
         ) : (
-          <div>
+          <div className={style.statusContainer}>
             <input
               onChange={this.onStatusChange}
               value={this.state.status}
