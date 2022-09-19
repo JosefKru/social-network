@@ -20,7 +20,7 @@ const authReducer = (state = initialState, action: any): InitialStateType => {
       return {
         ...state,
         ...action.payload,
-        // hye: 'hyeu', // ????????????????
+        hye: 'hyeu', // ????????????????
       }
     case GET_CAPTCHA_URL:
       return {
@@ -33,18 +33,23 @@ const authReducer = (state = initialState, action: any): InitialStateType => {
   }
 }
 
+// ==== thunk creators ====
 type SetAuthUserDataActionType = {
   type: typeof SET_USER_DATA
   payload: SetAuthUserDataActionPayloadType
 }
-
 type SetAuthUserDataActionPayloadType = {
   id: number | null
   login: string | null
   email: string | null
   isAuth: boolean
 }
+type GetCaptchaUrlActionType = {
+  type: typeof GET_CAPTCHA_URL
+  captchaUrl: string
+}
 
+// ==== action creators ====
 export const setAuthUserData = (
   id: number | null,
   login: string | null,
@@ -54,11 +59,6 @@ export const setAuthUserData = (
   type: SET_USER_DATA,
   payload: { id, login, email, isAuth },
 })
-
-type GetCaptchaUrlActionType = {
-  type: typeof GET_CAPTCHA_URL
-  captchaUrl: string
-}
 export const getCaptchaUrl = (captchaUrl: string): GetCaptchaUrlActionType => ({
   type: GET_CAPTCHA_URL,
   captchaUrl,
