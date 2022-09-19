@@ -7,35 +7,3 @@
 h1 {
   text-align: center;
 }
-
-.alert {
-  border: 1px solid black;
-  background: #ccc;
-  margin: 5px;
-  border-radius: 5px;
-  width: 250px;
-  height: 30px;
-  text-align: center;
-  position: relative;
-  font-size: 19px;
-}
-
-.alert button {
-  position: absolute;
-  top: 2px;
-  right: 2px;
-  border: 1px solid black;
-  width: 18px;
-  height: 17px;
-  color: #ccc;
-  font-size: 11px;
-  background-color: rgb(201, 3, 3);
-  border-radius: 8px;
-  cursor: pointer;
-}
-.alert button:hover {
-  background-color: rgb(224, 5, 5);
-}
-.alert button:active {
-  background-color: rgb(85, 0, 196);
-}

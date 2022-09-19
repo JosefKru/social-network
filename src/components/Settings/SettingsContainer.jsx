@@ -7,7 +7,7 @@ import ProfileDataReduxForm from './../Profile/ProfileInfo/ProfileDataForm/Profi
 import { useEffect, useState } from 'react'
 
 const Settings = ({ profile, saveProfile, savePhoto, getProfile, authId }) => {
-  const [saveMode, setSeveMode] = useState(false)
+  const [saveMode, setSaveMode] = useState(false)
 
   useEffect(() => {
     getProfile(authId)
@@ -20,22 +20,19 @@ const Settings = ({ profile, saveProfile, savePhoto, getProfile, authId }) => {
 
   const onSubmit = (formData) => {
     saveProfile(formData)
-    setSeveMode(true)
+    setSaveMode(true)
   }
   return (
     <div className={style.container}>
       <h1>Настройки профля</h1>
-      {saveMode && (
-        <div className={style.alert}>
-          <span>Профиль сахраньён </span>
-          <button onClick={() => setSeveMode(false)}>x</button>
-        </div>
-      )}
+
       <ProfileDataReduxForm
         profile={profile}
         initialValues={profile} // initialValues используется для отоброжения начальных значений формы
         onSubmit={onSubmit}
         onPhotoSelected={onPhotoSelected}
+        setSaveMode={setSaveMode}
+        saveMode={saveMode}
         // isOwner={isOwner}
       />
     </div>
