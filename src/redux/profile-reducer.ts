@@ -3,7 +3,6 @@ import { profileAPI } from '../api/api'
 import { PhotosType, PostType, ProfileType } from '../types/types'
 import { ThunkAction } from 'redux-thunk'
 import { AppStateType } from './redux-store'
-import { Dispatch } from 'redux'
 
 const ADD_POST = 'profile/ADD-POST'
 const SET_USER_PROFILE = 'profile/SET_USER_PROFILE'

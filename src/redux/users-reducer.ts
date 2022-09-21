@@ -147,7 +147,7 @@ export const toggleFollowingProgress = (
 })
 
 // ===== thunk creators =====
-type GetStateType = () => AppStateType
+// type GetStateType = () => AppStateType
 type DispatchType = Dispatch<ActionsTypes>
 type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsTypes>
 

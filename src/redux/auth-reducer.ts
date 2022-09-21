@@ -1,5 +1,5 @@
 import { stopSubmit } from 'redux-form'
-import { authAPI, securityAPI } from '../api/api'
+import { authAPI, ResultCodesEnum, securityAPI } from '../api/api'
 
 const SET_USER_DATA = 'auth/SET_USER_DATA'
 const GET_CAPTCHA_URL = 'auth/GET_CAPTCHA_URL'
@@ -20,7 +20,7 @@ const authReducer = (state = initialState, action: any): InitialStateType => {
       return {
         ...state,
         ...action.payload,
-        hye: 'hyeu', // ????????????????
+        // hye: 'hyeu', // ????????????????
       }
     case GET_CAPTCHA_URL:
       return {
@@ -33,7 +33,7 @@ const authReducer = (state = initialState, action: any): InitialStateType => {
   }
 }
 
-// ==== thunk creators ====
+// ==== types ====
 type SetAuthUserDataActionType = {
   type: typeof SET_USER_DATA
   payload: SetAuthUserDataActionPayloadType
@@ -67,8 +67,8 @@ export const getCaptchaUrl = (captchaUrl: string): GetCaptchaUrlActionType => ({
 // ==== thunk creators ====
 export const getAuthMe = () => async (dispatch: any) => {
   const response = await authAPI.me()
-  if (response.data.resultCode === 0) {
-    let { id, login, email } = response.data.data
+  if (response.resultCode === ResultCodesEnum.Success) {
+    let { id, login, email } = response.data
     dispatch(setAuthUserData(id, login, email, true))
   }
 }
@@ -77,16 +77,14 @@ export const login =
   (email: string, password: string, rememberMe: boolean, captcha: any) =>
   async (dispatch: any) => {
     const response = await authAPI.login(email, password, rememberMe, captcha)
-    if (response.data.resultCode === 0) {
+    if (response.resultCode === ResultCodesEnum.Success) {
       dispatch(getAuthMe())
     } else {
-      if (response.data.resultCode === 10) {
+      if (response.resultCode === ResultCodesEnum.CaptchaIsRequired) {
         dispatch(getCaptcha())
       }
       let message =
-        response.data.messages.length > 0
-          ? response.data.messages[0]
-          : 'Some error'
+        response.messages.length > 0 ? response.messages[0] : 'Some error'
       dispatch(stopSubmit('login', { _error: message }))
     }
   }
