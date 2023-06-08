@@ -16,10 +16,10 @@
 
 ## Технологии
 
-React: ⚛️
-Redux: 🔄
-JavaScript: 🚀
-TypeScript: 📚
+- React ⚛️
+- Redux 🔄
+- JavaScript 🚀
+- TypeScript 📚
 
 ## Связаться со мной 📧
 
