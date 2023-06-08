@@ -14,7 +14,7 @@
 
 Больше информации [*здесь*](https://alyakin.vercel.app/project/social-network-facepalm)
 
-## Технологии
+## Технологии 🛠️
 
 - React ⚛️
 - Redux 🔄
